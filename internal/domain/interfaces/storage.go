@@ -7,5 +7,6 @@ import (
 // EventKeeper interface with the storage backend
 type EventKeeper interface {
 	SaveEvent() error
-	GetEvent() (*event.CalendarEvent, error)
+	GetEvent() (*entities.CalendarEvent, error)
+	GetAllEvents() ([]entities.CalendarEvent, error)
 }
