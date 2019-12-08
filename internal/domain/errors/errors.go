@@ -1,6 +1,6 @@
 package errors
 
-// SentitelError is an Application Error
+// SentitelError is an Application Level Error
 type SentitelError string
 
 func (se SentitelError) Error() string {
