@@ -1,12 +1,12 @@
-PROJECT?=github.com/lefthander/otus-go-calendar
+PROJECT?=github.com/Lefthander/otus-go-calendar
 
 GOOS?=darwin
 GOARCH?=amd64
 
 RELEASE?=0.0.0
-BUILD_NUMBER := git-$(shell git rev-list HEAD --count)
-COMMIT := git-$(shell git rev-parse --short HEAD)
-BUILD_TIME := $(shell date -u '+%Y-%m-%d_%H:%M:%S')
+BUILD_NUMBER := $(shell git rev-list HEAD --count)
+COMMIT := $(shell git rev-parse --short HEAD)
+BUILD_TIME := $(shell date '+%Y-%m-%d_%H:%M:%S')
 
 build:
 	GOOS=${GOOS} GOARCH=${GOARCH} CGO_ENABLED=0 go build \

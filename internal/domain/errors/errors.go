@@ -15,4 +15,5 @@ var (
 	// Storage Errors
 	ErrCalendarUnableToSaveData = SentitelError("Unable to save event data")
 	ErrCalendarUnableToReadData = SentitelError("Unable to read event data")
+	ErrCalendarNoSuchEvent      = SentitelError("There is no such event in store")
 )

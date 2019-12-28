@@ -1,8 +1,10 @@
-module otus-go-calendar
+module github.com/Lefthander/otus-go-calendar
 
 go 1.13
 
 require (
-	github.com/pkg/errors v0.8.1
-	go.uber.org/zap v1.12.0 // indirect
+	github.com/kr/pretty v0.1.0 // indirect
+	github.com/sirupsen/logrus v1.4.2
+	github.com/stretchr/testify v1.4.0 // indirect
+	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 )

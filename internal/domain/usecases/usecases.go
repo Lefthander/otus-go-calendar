@@ -1,30 +1,40 @@
 package usecases
-import (
-	"github.com/lefthander/otus-go-calendar/internal/domain/interfaces"
-	"github.com/lefthander/otus-go-calendar/internal/domain/entities"
-	"github.com/lefthander/otus-go-calendar/internal/domain/utils"
 
+import (
+	"context"
+	"time"
+
+	"github.com/Lefthander/otus-go-calendar/internal/domain/entities"
+	"github.com/Lefthander/otus-go-calendar/internal/domain/interfaces"
+	"github.com/Lefthander/otus-go-calendar/internal/domain/utils"
 )
+
 // CalendarUseCases is a struct :)
 type CalendarUseCases struct {
 	CalendarStorage interfaces.EventKeeper
 }
 
-func (ces *CalendarUseCases) CreateCalendarEvent(ctx context.Context, user uint64, title, note string, \ 
-	                                             repeated bool, repeat, start, end *time.Time) (*entities.CalendarEvent, error){
-     event:= &entities.CalendarEvent{
-		 ID: utils.NewID(),
-		 Title: title,
-		 Note: note,
-		 isRepeated: repeated,
-		 RepeatTime: rt,
-		 UserID: user,
-		 BeginTime: start,
-		 EndTime: end,
-	 }
-	 err:= ces.CalendarStorage.SaveEvent(ctx,event)
-	 if err != nil {
-		 return nil, err
-	 }
-	 return event,nil
+// CreateCalendarEvent ...
+func (usecase *CalendarUseCases) CreateCalendarEvent(ctx context.Context, user uint64, title, note string, repeated bool, repeat, start, end time.Time) (*entities.CalendarEvent, error) {
+	event := &entities.CalendarEvent{
+		ID:        utils.NewID(),
+		Title:     title,
+		Note:      note,
+		UserID:    user,
+		BeginTime: start,
+		EndTime:   end,
+	}
+	if err := event.Validate(); err != nil {
+		return nil, err
+	}
+	err := usecase.CalendarStorage.SaveEvent(ctx, event)
+	if err != nil {
+		return nil, err
+	}
+	return event, nil
+}
+
+// GetEvent returns event from the store by id
+func (usecase *CalendarUseCases) GetEvent(ctx context.Context, eventID uint64) (*entities.CalendarEvent, error) {
+	return nil, nil
 }
