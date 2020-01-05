@@ -13,7 +13,8 @@ var (
 	ErrCalendarInvalidDateFormat = SentitelError("Invalid date format is used")
 
 	// Storage Errors
-	ErrCalendarUnableToSaveData = SentitelError("Unable to save event data")
-	ErrCalendarUnableToReadData = SentitelError("Unable to read event data")
-	ErrCalendarNoSuchEvent      = SentitelError("There is no such event in store")
+	ErrCalendarUnableToSaveData   = SentitelError("Unable to save event data")
+	ErrCalendarUnableToReadData   = SentitelError("Unable to read event data")
+	ErrCalendarNoSuchEvent        = SentitelError("There is no such event in store")
+	ErrCalendarEventAlreadyExists = SentitelError("Event with such ID already exists")
 )

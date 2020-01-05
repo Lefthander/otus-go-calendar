@@ -15,3 +15,6 @@ build:
 		-X ${PROJECT}/internal/version.CommitHash=${COMMIT} \
 		-X ${PROJECT}/internal/version.BuildTime=${BUILD_TIME}" \
 		-o bin/otus-go-calendar ${PROJECT}/cmd/otus-go-calendar
+
+test:
+	go test ${PROJECT}/...

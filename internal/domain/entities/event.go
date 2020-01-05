@@ -14,7 +14,10 @@ type CalendarEvent struct {
 	EndTime   time.Time // Event end time
 }
 
-// Validate checks the consistancy on event
-func (ce *CalendarEvent) Validate() error {
-	return nil
+// Validate checks the consistancy on event paramters if beginTime is greater than EndTime returns false
+func (ce *CalendarEvent) Validate() bool {
+	if ce.BeginTime.After(ce.EndTime) {
+		return false
+	}
+	return true
 }
